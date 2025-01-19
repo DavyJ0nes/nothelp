@@ -1,36 +1,20 @@
 # nothelp
 
-> Helper tool for managing notes.
+A simple helper tool for managing daily notes.
 
-## Commands
+It uses an embeded template that is the daily note along with my checklists
+that help keep me organised.
 
-- init
-  - create config with davy defaults
-- start
-  - check for existance of today's note
-  - if doesn't exist then:
-    - make a copy of the template
-    - update metadata, date/time etc
-    - save file with date in the configured folder
-  - open nvim on the line of the beginning of the start checklist (configurable?)
-- stop
-- today/inbox
+## Commmands
 
-## Requirements
+- `start`: Kick off the day by opening the daily note to the start of the morning checklist.
+- `stop`: End the day by running the evening checklist.
+- `today`: Open the notes section for today's note.
+- `yesterday`: Open the notes section for yesterday's note.
 
-- CLI first.
-- Use simple markdown.
-- Configuration in XDG_CONFIG_HOME.
-  - directory to store notes.
-  - template to use.
-- Create a daily note based on a template.
-- support start, stop, today and inbox workflows (davy knows).
+## Ideas
 - easy to add short snippets from CLI to daily note.
-  - extension: should also support piping
-- check for existance of daily note before doing anything.
-- allow for 
 - add tracking of habits?
-- use vim as the editor of choice (makes it easier to go to specific lines)
 - nvim plugin
   - command to open the note.
   - telescope searching.
