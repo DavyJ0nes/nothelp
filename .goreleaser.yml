@@ -1,12 +1,12 @@
 project_name: nothelp
 builds:
-  - env:
+  - main: ./
+    env:
       - CGO_ENABLED=0
     targets:
       - linux_amd64
       - darwin_amd64
       - darwin_arm64
-    main: ./
     ldflags:
       - -s -w
     flags:
