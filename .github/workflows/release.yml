@@ -25,3 +25,4 @@ jobs:
           allow-initial-development-versions: true
           changelog-file: true
           changelog-generator-opt: "emojis=true"
+          hooks: goreleaser
