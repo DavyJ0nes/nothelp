@@ -67,10 +67,6 @@ git-verify-no-diff: $(sagefile)
 go-format: $(sagefile)
 	@$(sagefile) GoFormat
 
-.PHONY: go-licenses
-go-licenses: $(sagefile)
-	@$(sagefile) GoLicenses
-
 .PHONY: go-lint
 go-lint: $(sagefile)
 	@$(sagefile) GoLint
