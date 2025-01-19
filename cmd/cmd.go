@@ -14,6 +14,7 @@ func exists(filePath string) bool {
 	return err == nil
 }
 
+//nolint:gosec
 func openInNvim(filePath string, lineNumber int) error {
 	cmd := exec.Command("nvim", fmt.Sprintf("+%d", lineNumber), filePath)
 	cmd.Stdin = os.Stdin
@@ -34,10 +35,10 @@ func openNoteFile(offset int, searchText, date string) error {
 		if err != nil {
 			return err
 		}
-		if err := os.MkdirAll(conf.DataLocation, 0755); err != nil {
+		if err := os.MkdirAll(conf.DataLocation, 0o755); err != nil {
 			return err
 		}
-		if err := os.WriteFile(filePath, body, 0644); err != nil {
+		if err := os.WriteFile(filePath, body, 0o600); err != nil {
 			return err
 		}
 	}

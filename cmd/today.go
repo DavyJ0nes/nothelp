@@ -11,7 +11,7 @@ func TodayCmd() *cobra.Command {
 		Use:     "today",
 		Short:   "open todays note",
 		Aliases: []string{"inbox"},
-		RunE: func(cmd *cobra.Command, args []string) error {
+		RunE: func(_ *cobra.Command, _ []string) error {
 			return todayRun()
 		},
 	}
@@ -22,7 +22,7 @@ func todayRun() error {
 	date := time.Now().Format("2006-01-02")
 	return openNoteFile(
 		-1,
-		"-------------------------------------------------------------------------------",
+		"______________________________________________________________________",
 		date,
 	)
 }

@@ -53,5 +53,4 @@ func GetLineNumber(filePath, text string) (int, error) {
 	}
 
 	return -1, nil // Return 0 if the text is not found
-
 }

@@ -10,7 +10,7 @@ func StartCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "start",
 		Short: "start the day",
-		RunE: func(cmd *cobra.Command, args []string) error {
+		RunE: func(_ *cobra.Command, _ []string) error {
 			return startRun()
 		},
 	}
@@ -19,5 +19,5 @@ func StartCmd() *cobra.Command {
 
 func startRun() error {
 	date := time.Now().Format("2006-01-02")
-	return openNoteFile(3, "## Morning Checklist", date)
+	return openNoteFile(4, "## Morning Checklist", date)
 }
