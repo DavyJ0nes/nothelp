@@ -14,6 +14,7 @@ func RootCmd() *cobra.Command {
 		StartCmd(),
 		StopCmd(),
 		TodayCmd(),
+		YesterdayCmd(),
 	)
 	return cmd
 }

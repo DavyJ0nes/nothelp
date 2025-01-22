@@ -16,6 +16,7 @@ help keep me organised.
 ## Ideas
 
 - easy to add short snippets from CLI to daily note.
+- sync notes repo and push updates.
 - add tracking of habits
 - generate stats:
   - completed the checklist?
