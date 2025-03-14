@@ -7,12 +7,13 @@ type Config struct {
 }
 
 func Parse() (Config, error) {
+	obsidianPrefix := "/Library/Mobile Documents/iCloud~md~obsidian/Documents"
 	homedir, err := os.UserHomeDir()
 	if err != nil {
 		return Config{}, err
 	}
 
 	return Config{
-		DataLocation: homedir + "/notes/daily",
+		DataLocation: homedir + obsidianPrefix + "/notes/daily",
 	}, nil
 }
