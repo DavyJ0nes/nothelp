@@ -9,7 +9,7 @@ import (
 
 func main() {
 	if err := cmd.RootCmd().Execute(); err != nil {
-		fmt.Fprintf(os.Stderr, "nothelp failed: %s\n", err)
+		fmt.Fprintf(os.Stderr, "command failed to run: %s\n", err)
 		os.Exit(1)
 	}
 }
