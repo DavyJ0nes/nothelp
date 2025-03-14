@@ -1,5 +1,5 @@
 module github.com/davyj0nes/nothelp/.sage
 
-go 1.23.5
+go 1.24.1
 
 require go.einride.tech/sage v0.337.1

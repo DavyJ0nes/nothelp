@@ -1,6 +1,6 @@
 module github.com/davyj0nes/nothelp
 
-go 1.23.5
+go 1.24.1
 
 require github.com/spf13/cobra v1.8.1
 
