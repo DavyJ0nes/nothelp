@@ -19,9 +19,5 @@ func YesterdayCmd() *cobra.Command {
 
 func yesterdayRun() error {
 	date := time.Now().Add(-24 * time.Hour).Format("2006-01-02")
-	return openNoteFile(
-		-1,
-		"______________________________________________________________________",
-		date,
-	)
+	return openNoteFile(-1, "## Focus for Today", date)
 }
