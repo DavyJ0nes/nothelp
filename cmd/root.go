@@ -11,6 +11,9 @@ func RootCmd() *cobra.Command {
 		Long:  `Simple application to help you take notes.`,
 	}
 	cmd.AddCommand(
+		ArchiveCmd(),
+		NoteCmd(),
+		ReviewCmd(),
 		StartCmd(),
 		StopCmd(),
 		TodayCmd(),

@@ -1,8 +1,6 @@
 package cmd
 
 import (
-	"time"
-
 	"github.com/spf13/cobra"
 )
 
@@ -18,6 +16,5 @@ func StopCmd() *cobra.Command {
 }
 
 func stopRun() error {
-	date := time.Now().Format("2006-01-02")
-	return openNoteFile(4, "## Evening Checklist", date)
+	return openNoteFile(4, "## Evening Checklist", todayDate())
 }

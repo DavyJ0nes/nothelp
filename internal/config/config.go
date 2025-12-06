@@ -3,7 +3,8 @@ package config
 import "os"
 
 type Config struct {
-	DataLocation string `json:"data_location"`
+	DataLocation    string
+	ArchiveLocation string
 }
 
 func Parse() (Config, error) {
@@ -14,6 +15,15 @@ func Parse() (Config, error) {
 	}
 
 	return Config{
-		DataLocation: homedir + obsidianPrefix + "/notes/daily",
+		DataLocation:    homedir + obsidianPrefix + "/notes/daily",
+		ArchiveLocation: homedir + obsidianPrefix + "/notes/daily/archive",
 	}, nil
+}
+
+func (c Config) GetDataFilePath(date string) string {
+	return c.DataLocation + "/" + date + ".md"
+}
+
+func (c Config) GetArchiveFilePath(date string) string {
+	return c.ArchiveLocation + "/" + date + ".md"
 }

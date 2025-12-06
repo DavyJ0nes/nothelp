@@ -1,9 +1,5 @@
 # {{.Date}}
 
-## Notes
-
--
-
 ## Snapshot
 
 - Sleep (0–10):
@@ -38,7 +34,7 @@ ______________________________________________________________________
 
 ### Plan (with Taskwarrior)
 
-- [ ] Run `tinbox next` and empty the inbox:
+- [ ] Run `startinbox` and empty the inbox:
   - Clarify each item (add +work/+personal, project, due if needed)
 - [ ] Run `twork next` and `tpersonal next`:
   - Choose today’s tasks and mark them with `+today`
@@ -53,7 +49,7 @@ ______________________________________________________________________
   - e.g. YouTube, phone, specific sites:
     - ...
 
-## During the Day (optional quick notes)
+## Notes
 
 - Interruptions / context switches worth noting:
   - ...

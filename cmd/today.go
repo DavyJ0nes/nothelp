@@ -1,8 +1,6 @@
 package cmd
 
 import (
-	"time"
-
 	"github.com/spf13/cobra"
 )
 
@@ -19,6 +17,5 @@ func TodayCmd() *cobra.Command {
 }
 
 func todayRun() error {
-	date := time.Now().Format("2006-01-02")
-	return openNoteFile(-1, "## Focus for Today", date)
+	return openNoteFile(-1, "## Focus for Today", todayDate())
 }
