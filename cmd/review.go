@@ -92,7 +92,11 @@ func reviewRun(cmd *cobra.Command, outputPath string) error {
 	endDate := notes[len(notes)-1].Date
 
 	if outputPath == "" {
-		outputPath = filepath.Join(conf.DataLocation, "reviews", fmt.Sprintf("review-%s-to-%s.json", startDate, endDate))
+		outputPath = filepath.Join(
+			conf.DataLocation,
+			"reviews",
+			fmt.Sprintf("review-%s-to-%s.json", startDate, endDate),
+		)
 	}
 
 	prompt := buildReviewPrompt(notes, startDate, endDate)
@@ -129,10 +133,8 @@ func reviewRun(cmd *cobra.Command, outputPath string) error {
 }
 
 func collectNotes(conf config.Config, days int) ([]dailyNote, []string, error) {
-	var (
-		notes        []dailyNote
-		missingDates []string
-	)
+	notes := make([]dailyNote, 0, days)
+	missingDates := make([]string, 0, days)
 
 	now := time.Now()
 
@@ -173,6 +175,7 @@ func readNoteForDate(conf config.Config, date string) (string, bool, error) {
 	return "", false, nil
 }
 
+//nolint:lll
 func buildReviewPrompt(notes []dailyNote, startDate, endDate string) string {
 	var b strings.Builder
 
@@ -278,7 +281,12 @@ func (c *llmClient) Complete(ctx context.Context, prompt string) (string, error)
 		return "", err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, http.MethodPost, c.baseURL+"/chat/completions", bytes.NewReader(payload))
+	req, err := http.NewRequestWithContext(
+		ctx,
+		http.MethodPost,
+		c.baseURL+"/chat/completions",
+		bytes.NewReader(payload),
+	)
 	if err != nil {
 		return "", err
 	}
@@ -298,7 +306,11 @@ func (c *llmClient) Complete(ctx context.Context, prompt string) (string, error)
 	}
 
 	if resp.StatusCode != http.StatusOK {
-		return "", fmt.Errorf("llm request failed: status %d: %s", resp.StatusCode, strings.TrimSpace(string(respBody)))
+		return "", fmt.Errorf(
+			"llm request failed: status %d: %s",
+			resp.StatusCode,
+			strings.TrimSpace(string(respBody)),
+		)
 	}
 
 	var parsed chatResponse

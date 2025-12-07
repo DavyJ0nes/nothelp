@@ -3,7 +3,7 @@ package config
 import (
 	"testing"
 
-	"github.com/stretchr/testify/require"
+	"gotest.tools/v3/assert"
 )
 
 const obsidianPrefix = "/Library/Mobile Documents/iCloud~md~obsidian/Documents"
@@ -14,10 +14,10 @@ func TestParse(t *testing.T) {
 	t.Setenv("USERPROFILE", home)
 
 	cfg, err := Parse()
-	require.NoError(t, err)
+	assert.NilError(t, err)
 
-	require.Equal(t, home+obsidianPrefix+"/notes/daily", cfg.DataLocation)
-	require.Equal(t, home+obsidianPrefix+"/notes/daily/archive", cfg.ArchiveLocation)
+	assert.Equal(t, home+obsidianPrefix+"/notes/daily", cfg.DataLocation)
+	assert.Equal(t, home+obsidianPrefix+"/notes/daily/archive", cfg.ArchiveLocation)
 }
 
 func TestGetDataFilePath(t *testing.T) {
@@ -26,7 +26,7 @@ func TestGetDataFilePath(t *testing.T) {
 
 	path := cfg.GetDataFilePath(date)
 
-	require.Equal(t, "/tmp/data/2025-01-02.md", path)
+	assert.Equal(t, "/tmp/data/2025-01-02.md", path)
 }
 
 func TestGetArchiveFilePath(t *testing.T) {
@@ -35,5 +35,5 @@ func TestGetArchiveFilePath(t *testing.T) {
 
 	path := cfg.GetArchiveFilePath(date)
 
-	require.Equal(t, "/tmp/archive/2025-01-02.md", path)
+	assert.Equal(t, "/tmp/archive/2025-01-02.md", path)
 }
