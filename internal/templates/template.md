@@ -28,7 +28,7 @@ ______________________________________________________________________
 
 ## 🏁 Shutdown
 
-- [ ] **Save State:** Mark `done` in Taskwarrior. Write tomorrow's "Next
-  Action" line.
+- [ ] **Save State:** Mark `done` in Taskwarrior. Write tomorrow's "Next Action"
+  line.
 - [ ] **Clear Deck:** Run `exit-work`. Physically clear the desk.
 - [ ] **Transition:** Go home and workout for 15 minutes then cook dinner.
