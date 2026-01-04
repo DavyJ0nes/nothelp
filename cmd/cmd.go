@@ -79,6 +79,26 @@ func openInNvim(filePath string, lineNumber int) error {
 	return cmd.Run()
 }
 
+func killApps(apps []string) error {
+	for _, app := range apps {
+		// Using pkill -i for case-insensitive matching
+		if err := exec.Command("osascript", "-e", `tell application "`+app+`" to quit`).Run(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func startApps(apps []string) error {
+	for _, app := range apps {
+		// Using pkill -i for case-insensitive matching
+		if err := exec.Command("osascript", "-e", `tell application "`+app+`" to launch`).Run(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 func todayDate() string {
 	return time.Now().Format(dateFormat)
 }

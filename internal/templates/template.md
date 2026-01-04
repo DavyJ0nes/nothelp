@@ -1,105 +1,34 @@
 # {{.Date}}
 
-## Snapshot
+## 🎯 The Focus
 
-- Sleep (0–10):
-- Energy (0–10):
-- Mood (word or emoji):
-- One-line intention for today:
-  - "Today will be a good day if I ...
+*Pick 3 things. If these happen, the day is a success.*
 
-______________________________________________________________________
-
-## Focus for Today
-
-### Big 3
-
-1. [ ] Work:
-2. [ ] Personal / Home:
-3. [ ] Learning / Growth:
-
-(Keep these short and outcome-based, e.g. “Get PR #123 reviewed”, “30m cycle”.)
+- **Work:**
+- **Learning:**
+- **Life:**
+- **Daily Non-Negotiable:** ... (e.g. 10m Meditation)
 
 ______________________________________________________________________
 
-## Morning Checklist
+## 🚀 Startup
 
-### Init
-
-- [ ] Clear your workspace, close unnecessary programs and browser tabs
-- [ ] Process **personal** email inbox (2-minute rule)
-- [ ] Process **work** email inbox (2-minute rule)
-- [ ] Check calendar – any meetings to prep for?
-- [ ] Process Slack notifications (especially Saved items)
-
-### Plan (with Taskwarrior)
-
-- [ ] Run `startinbox` and empty the inbox:
-  - Clarify each item (add +work/+personal, project, due if needed)
-- [ ] Run `twork next` and `tpersonal next`:
-  - Choose today’s tasks and mark them with `+today`
-- [ ] Confirm **Big 3** above match your `+today` tasks
-
-### Check-in
-
-- [ ] How are you feeling mentally/physically?
-  - Notes:
-    - ...
-- [ ] Any obvious distractions to watch out for today?
-  - e.g. YouTube, phone, specific sites:
-    - ...
-
-## Notes
-
-- Interruptions / context switches worth noting:
-  - ...
-  - ...
-- Ideas / thoughts to capture (later turn into tasks or notes):
-  - ...
-  - ...
+- [ ] **Reset:** Clear tabs. Phone away.
+- [ ] **Deep Work:** 30m on Domain/Arch (No Slack/Email yet).
+- [ ] **Sync:** Run `startinbox`. Reorganise `ttoday`. Review `twork next` and
+  `tpersonal next`
 
 ______________________________________________________________________
 
-## Evening Checklist
+## 📝 The Log
 
-### Init
+> *Write it here so you don't do it now. Process this at 16:30.*
 
-- [ ] Clear your workspace, close unnecessary programs and browser tabs
-- [ ] Process personal email inbox (2-minute rule)
-- [ ] Process work email inbox (2-minute rule)
-- [ ] Check calendar for tomorrow – what needs prepping?
-- [ ] Process Slack notifications / Saved items
+______________________________________________________________________
 
-### Review (with Taskwarrior)
+## 🏁 Shutdown
 
-- [ ] Run `twork` and `tpersonal` (today view)
-  - [ ] Mark completed tasks `done`
-  - [ ] Remove `+today` from anything that’s no longer important
-- [ ] Run `twork next` / `tpersonal next`
-  - [ ] Choose **tomorrow’s tentative Big 3** and mark `+today` for them
-
-### Reflect
-
-- [ ] What did you **finish** today?
-
-  - ...
-  - ...
-
-- [ ] What **blocked** you or caused procrastination?
-
-  - ...
-
-- [ ] What did you **learn** today? (technical or about yourself)
-
-  - <LEARNED>
-  - ...
-
-- [ ] One small improvement for tomorrow:
-
-  - "Tomorrow will go better if I ..."
-
-### Shutdown
-
-- [ ] Write a one-line summary of today:
-  - ...
-- [ ] Say your shutdown phrase (e.g. “Work is done for today.”)
+- [ ] **Save State:** Mark `done` in Taskwarrior. Write tomorrow's "Next
+  Action" line.
+- [ ] **Clear Deck:** Run `exit-work`. Physically clear the desk.
+- [ ] **Transition:** Go home and workout for 15 minutes then cook dinner.
