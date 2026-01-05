@@ -15,7 +15,7 @@ func LogCmd() *cobra.Command {
 		Use:   "log <activity...>",
 		Short: "Log a timestamped activity to the daily audit",
 		Args:  cobra.MinimumNArgs(1),
-		RunE: func(cmd *cobra.Command, args []string) error {
+		RunE: func(_ *cobra.Command, args []string) error {
 			activity := strings.Join(args, " ")
 			return logRun(activity)
 		},
@@ -51,7 +51,7 @@ func logRun(activity string) error {
 	}
 
 	// 4. Save the file
-	err = os.WriteFile(filePath, []byte(strings.Join(updated, "\n")), 0644)
+	err = os.WriteFile(filePath, []byte(strings.Join(updated, "\n")), 0o600)
 	if err != nil {
 		return fmt.Errorf("failed to save note: %w", err)
 	}

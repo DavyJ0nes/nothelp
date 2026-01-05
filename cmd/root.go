@@ -12,6 +12,7 @@ func RootCmd() *cobra.Command {
 	}
 	cmd.AddCommand(
 		ArchiveCmd(),
+		AnalysisCmd(),
 		LogCmd(),
 		NoteCmd(),
 		ReviewCmd(),
