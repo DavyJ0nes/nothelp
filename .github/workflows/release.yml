@@ -13,10 +13,12 @@ jobs:
       - name: Setup Sage
         uses: einride/sage/actions/setup@master
         with:
-          go-version: 1.24
+          go-version: 1.25
 
       - name: Make
-        run: make
+        run: |
+          make clean-sage
+          make
 
       - name: Release
         uses: go-semantic-release/action@v1.23
