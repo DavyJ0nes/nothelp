@@ -18,9 +18,17 @@ ______________________________________________________________________
 ## 🚀 Startup
 
 - [ ] **Reset:** Clear tabs. Phone away.
-- [ ] **Deep Work:** 30m on Domain/Arch (No Slack/Email yet).
-- [ ] **Sync:** Run `startinbox`. Reorganise `ttoday`. Review `twork next` and
-  `tpersonal next`
+- [ ] **Sweep:** Check emails and slack messages (2-min rule)
+- [ ] **Prep for Standup:**
+  - Tickets updated?
+  - PRs reviewed?
+  - Questions to post?
+- [ ] **Sync:** Update tasks
+  - Run `startinbox`
+  - Reorganise `ttoday`
+  - Review `twork next`
+  - Review `tpersonal next`
+- [ ] **Goal:** What's the main deliverable of the day?
 
 ______________________________________________________________________
 
@@ -28,21 +36,25 @@ ______________________________________________________________________
 
 > Time tracking
 
-| Time  | Activity              | Duration |
-| :---- | :-------------------- | :------- |
-| xx:xx | Started Domain Sprint | —        |
+| Time  | Activity    | Duration |
+| :---- | :---------- | :------- |
+| xx:xx | Started Day | —        |
 
 ______________________________________________________________________
 
 ## 📝 The Log
 
-> *Write it here so you don't do it now. Process this at 16:30.*
+> *Write it here so you don't do it now. Process this during shutdown.*
 
 ______________________________________________________________________
 
 ## 🏁 Shutdown
 
-- [ ] **Save State:** Mark `done` in Taskwarrior. Write tomorrow's "Next Action"
-  line.
+- [ ] **Save State:**
+  - Update Taskwarrior.
+  - Write tomorrow's "Next Action" line.
+- [ ] **Review Log:**
+  - What is important for tomorrow?
+  - How was your focus today?
 - [ ] **Clear Deck:** Physically clear the desk.
 - [ ] **Transition:** Go home, workout for 15 minutes then cook dinner.
