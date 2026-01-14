@@ -198,6 +198,12 @@ func buildFocusSummary(entries []auditEntry, entryCount int) string {
 		"training",
 		"meditation",
 		"logic",
+		"pr",
+		"prs",
+		"PRs",
+		"rfc",
+		"sync",
+		"typing",
 	}
 	lossKeywords := []string{
 		"config",

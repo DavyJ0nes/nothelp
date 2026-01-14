@@ -2,59 +2,52 @@
 
 ## 🎯 The Focus
 
-*Pick 3 things. If these happen, the day is a success.*
+*The 3 Pillars: If these happen, the day is a success.*
 
-- **Work:**
-  - ... (e.g. complete ticket)
-- **Learning:**
-  - ... (e.g. complete Elixir course section)
-- **Life:**
-  - ... (e.g. buy flowers for Beth)
-- **Daily Non-Negotiable:**
-  - ... (e.g. 10m Meditation)
+- **1. Vätternrundan (Cycling):**
+- 2. **Work (Primary Task):** ...
+- **Daily Non-Negotiable:** ... (10m Meditation & Alcohol-Free Check)
 
 ______________________________________________________________________
 
-## 🚀 Startup
+## 🚀 Startup (08:30 - 09:30)
 
-- [ ] **Reset:** Clear tabs. Phone away.
-- [ ] **Sweep:** Check emails and slack messages (2-min rule)
-- [ ] **Prep for Standup:**
-  - Tickets updated?
-  - PRs reviewed?
-  - Questions to post?
-- [ ] **Sync:** Update tasks
-  - Run `startinbox`
-  - Reorganise `ttoday`
-  - Review `twork next`
-  - Review `tpersonal next`
-- [ ] **Goal:** What's the main deliverable of the day?
+- [ ] **Reset:** Clear tabs. Phone away. Run `start-work`.
+- [ ] **Sweep:** Check email/slack (2-min rule).
+- [ ] **Sync:**
+  - `startinbox`
+  - `ttoday`
+  - `twork next`
+  - `tpersonal next`
+- [ ] **Prep for Standup:** PRs reviewed? Tickets updated?
 
 ______________________________________________________________________
 
 ## ⏳ The Time Audit
 
 > Time tracking
+>
+> - categories:
+> - `markers`, `distraction`, `team work`, `ops work`, `social`, `meeting`
 
-| Time  | Activity    | Duration |
-| :---- | :---------- | :------- |
-| xx:xx | Started Day | —        |
+| Time  | Activity    | Category | Duration |
+| :---- | :---------- | :------- | :------- |
+| 08:30 | Started Day | markers  | —        |
 
 ______________________________________________________________________
 
 ## 📝 The Log
 
-> *Write it here so you don't do it now. Process this during shutdown.*
+> *Log distractions here. Use <leader>ntl to append one-liners.*
 
 ______________________________________________________________________
 
-## 🏁 Shutdown
+## 🏁 Shutdown (16:30 - 17:00)
 
-- [ ] **Save State:**
-  - Update Taskwarrior.
-  - Write tomorrow's "Next Action" line.
-- [ ] **Review Log:**
-  - What is important for tomorrow?
-  - How was your focus today?
-- [ ] **Clear Deck:** Physically clear the desk.
-- [ ] **Transition:** Go home, workout for 15 minutes then cook dinner.
+- [ ] **Save State:** Update Taskwarrior. Write "Next Action" line.
+- [ ] **Habit Check:**
+  - [ ] 10m Meditation done?
+  - [ ] Alcohol-free today? (Log the win!)
+- [ ] **Review Log:** What is important for tomorrow?
+- [ ] **Clear Deck:** Physically clear the desk. Run `exit-work`.
+- [ ] **Transition:** Go home, workout for 15 minutes, then cook dinner.

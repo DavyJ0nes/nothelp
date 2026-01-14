@@ -43,7 +43,7 @@ func logRun(activity string) error {
 	}
 
 	lines := strings.Split(string(input), "\n")
-	newRow := fmt.Sprintf("| %s | %s | — |", currentTime, activity)
+	newRow := fmt.Sprintf("| %s | %s | - | - |", currentTime, activity)
 
 	updated, err := insertTimeAuditRow(lines, newRow)
 	if err != nil {
