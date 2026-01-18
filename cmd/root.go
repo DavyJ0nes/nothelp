@@ -15,10 +15,12 @@ func RootCmd() *cobra.Command {
 		AnalysisCmd(),
 		LogCmd(),
 		NoteCmd(),
+		PressupCmd(),
 		ReviewCmd(),
 		StartCmd(),
 		StopCmd(),
 		TodayCmd(),
+		TrainingCmd(),
 		YesterdayCmd(),
 	)
 	return cmd
