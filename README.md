@@ -75,8 +75,10 @@ in place), `lint:go:fix`, `mod:tidy`, `lint:commits` (convco), and `mise:lock`.
 Run `mise tasks` to list them all.
 
 Commits follow [Conventional Commits](https://www.conventionalcommits.org)
-(validated by `convco`); releases are cut from commit history by
-go-semantic-release on push to `main`.
+(validated by `convco`). On push to `main` the `release` workflow computes the
+next version from the commit history, tags it, and publishes the changelog and
+Go binaries with [GoReleaser](https://goreleaser.com) (`feat` → minor, `fix` /
+`perf` → patch). Preview the next version locally with `mise run release:dry`.
 
 Tool, Go-module, and GitHub-Actions updates are managed by Renovate, which opens
 a single grouped PR on the first Tuesday of each month. `mise.lock` is committed
