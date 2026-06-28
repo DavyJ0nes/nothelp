@@ -1,17 +1,20 @@
 name: review
-
 on:
   pull_request:
     types: [opened, reopened, synchronize]
-
+permissions:
+  contents: read
 jobs:
-  make:
+  ci:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Sage
-        uses: einride/sage/actions/setup@master
+      - uses: actions/checkout@v7
         with:
-          go-version: 1.24
-
-      - name: Make
-        run: make
+          fetch-depth: 0
+      - uses: jdx/mise-action@v4
+      - name: mise run ci
+        run: mise run ci
+      - name: lint commits
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.sha }}
+        run: mise run lint:commits

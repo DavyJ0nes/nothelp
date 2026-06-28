@@ -1,0 +1,149 @@
+# mise — dev tooling + task runner for this repo.
+# Docs: https://mise.jdx.dev   |   List tasks: `mise tasks`   |   Run one: `mise run <task>`
+#
+# Go CLI repo. Self-contained: the baseline tasks (mise:lock/check, fmt:*,
+# lint:scripts) are defined here rather than inherited from a global config, so
+# CI (`jdx/mise-action`) has everything it needs from this file alone.
+# Tool versions are managed by Renovate (one grouped "mise tools" PR per cycle).
+
+[settings]
+lockfile = true
+lockfile_platforms = ["macos-arm64", "linux-x64"]
+minimum_release_age = "7d"
+
+[tools]
+go            = "1.26.4"
+golangci-lint = "2.12.2"
+rumdl         = "0.2.23"
+shellcheck    = "0.11.0"
+yamlfmt       = "0.21.0"
+# golines (Go long-line formatter) — pinned via the go: backend to match the
+# binary used elsewhere. Only used by the local `fmt:go` task.
+"go:github.com/segmentio/golines" = "0.13.0"
+
+# convco — Conventional Commits validator backing `lint:commits` (go-semantic-release
+# relies on conventional commits for versioning). No aqua registry entry yet, so
+# pin via the github backend with per-platform asset patterns. No Intel-macOS
+# asset is published, so macos-x64 is omitted.
+[tools."github:convco/convco"]
+version = "0.6.4"
+
+[tools."github:convco/convco".platforms]
+macos-arm64 = { asset_pattern = "convco-macos.zip" }
+linux-arm64 = { asset_pattern = "convco-ubuntu-aarch64.zip" }
+linux-x64   = { asset_pattern = "convco-ubuntu.zip" }
+
+# ────────────────────────────────────────────────────────────────────────────
+# Repo / lockfile maintenance.
+# ────────────────────────────────────────────────────────────────────────────
+
+[tasks."mise:lock"]
+description = "Regenerate mise.lock (refresh checksums/URLs for all platforms)"
+run = "mise lock"
+
+[tasks."mise:check"]
+description = "Verify mise environment is healthy and mise.lock is in sync (CI-safe)"
+depends = ["mise:lock"]
+run = '''
+mise doctor --silent
+if [ -n "$(git status --porcelain -- mise.lock)" ]; then
+  echo "mise.lock out of sync. run 'mise run mise:lock' and commit." >&2
+  git status --porcelain -- mise.lock >&2
+  exit 1
+fi
+'''
+
+# ────────────────────────────────────────────────────────────────────────────
+# Formatting — markdown (rumdl) and YAML (yamlfmt). `:check` variants are CI-safe.
+# ────────────────────────────────────────────────────────────────────────────
+
+[tasks."fmt:md"]
+description = "Format markdown with rumdl"
+run = "rumdl fmt ."
+
+[tasks."fmt:check"]
+description = "Verify markdown is formatted (CI-safe)"
+run = "rumdl fmt --check ."
+
+[tasks."fmt:yaml"]
+description = "Format YAML with yamlfmt"
+run = "yamlfmt ."
+
+[tasks."fmt:yaml:check"]
+description = "Verify YAML is formatted (CI-safe)"
+run = "yamlfmt -lint ."
+
+[tasks."fmt:go"]
+description = "Format Go with golines"
+run = "golines -w ."
+
+[tasks."lint:scripts"]
+description = "shellcheck on scripts/*.sh and .mise/scripts/*.sh (no-op if none)"
+run = '''
+#!/usr/bin/env bash
+set -euo pipefail
+shopt -s nullglob
+set -- scripts/*.sh .mise/scripts/*.sh
+if [ "$#" -eq 0 ]; then
+  echo "no shell scripts found — skipping"
+  exit 0
+fi
+shellcheck "$@"
+'''
+
+# ────────────────────────────────────────────────────────────────────────────
+# Go — build, test, lint, and module hygiene. `go.mod` lives at the repo root.
+# ────────────────────────────────────────────────────────────────────────────
+
+[tasks.build]
+description = "Compile every Go package (catches build errors)"
+run = "go build ./..."
+
+[tasks.test]
+description = "Run the full Go test suite with the race detector"
+run = "go test -race ./..."
+
+[tasks."lint:go"]
+description = "Run golangci-lint across all Go packages"
+run = "golangci-lint run ./..."
+
+[tasks."lint:go:fix"]
+description = "Run golangci-lint with --fix"
+run = "golangci-lint run --fix ./..."
+
+[tasks."mod:tidy"]
+description = "Refresh go.mod / go.sum"
+run = "go mod tidy"
+
+[tasks."mod:check"]
+description = "Fail if go.mod / go.sum would change after tidy (CI-safe)"
+depends = ["mod:tidy"]
+run = '''
+if ! git diff --exit-code -- go.mod go.sum; then
+  echo "go.mod / go.sum out of sync. run 'mise run mod:tidy' and commit." >&2
+  exit 1
+fi
+'''
+
+[tasks."lint:commits"]
+description = "Validate commits against Conventional Commits (convco). PR-only; set BASE_REF to the base sha."
+run = "convco check ${BASE_REF:-origin/main}..HEAD"
+
+# ────────────────────────────────────────────────────────────────────────────
+# Aggregate — `mise run ci` is the strict suite the workflows invoke.
+# `lint:commits` is intentionally excluded (it needs the PR base ref / full history)
+# and runs as its own PR-only CI step.
+# ────────────────────────────────────────────────────────────────────────────
+
+[tasks.ci]
+description = "Run the strict CI-parity suite (what .github/workflows invoke)"
+depends = [
+  "mise:check",
+  "fmt:check",
+  "fmt:yaml:check",
+  "lint:scripts",
+  "mod:check",
+  "lint:go",
+  "build",
+  "test",
+]

@@ -65,7 +65,7 @@ func TrainingListCmd() *cobra.Command {
 
 			// Try to parse as week number
 			weekNum := 0
-			fmt.Sscanf(arg, "%d", &weekNum)
+			_, _ = fmt.Sscanf(arg, "%d", &weekNum)
 			return trainingListRun(weekNum)
 		},
 	}

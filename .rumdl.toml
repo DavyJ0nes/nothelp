@@ -1,0 +1,12 @@
+[global]
+flavor = "gfm"
+line-length = 80
+# Embedded note templates are data (Go text/template), not docs — never reflow them.
+exclude = ["internal/templates"]
+
+[MD013]
+reflow = true
+code-blocks = false  # match mdformat: don't flag long lines inside fenced code
+
+[MD029]
+style = "ordered"
