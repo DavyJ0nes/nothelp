@@ -70,8 +70,9 @@ mise run ci         # run the full CI-parity suite locally
 | `build` | `go build ./...` |
 | `test` | `go test -race ./...` |
 
-Local-only helpers (not part of `ci`): `fmt:md` / `fmt:yaml` / `fmt:go` (format
-in place), `lint:go:fix`, `mod:tidy`, `lint:commits` (convco), and `mise:lock`.
+Local-only helpers (not part of `ci`): `install` (`go install .` to GOBIN),
+`fmt:md` / `fmt:yaml` / `fmt:go` (format in place), `lint:go:fix`, `mod:tidy`,
+`lint:commits` (convco), and `mise:lock`.
 Run `mise tasks` to list them all.
 
 Commits follow [Conventional Commits](https://www.conventionalcommits.org)

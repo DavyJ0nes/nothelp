@@ -104,6 +104,10 @@ shellcheck "$@"
 description = "Compile every Go package (catches build errors)"
 run = "go build ./..."
 
+[tasks."go:install"]
+description = "Install the nothelp binary to GOBIN (go install)"
+run = "go install ."
+
 [tasks.test]
 description = "Run the full Go test suite with the race detector"
 run = "go test -race ./..."
