@@ -26,5 +26,5 @@ func startRun() error {
 		return err
 	}
 
-	return openNoteFile(0, "## 🚀 Startup", todayDate())
+	return openNoteFile(0, "## 🚀 Start", todayDate())
 }

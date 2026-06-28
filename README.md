@@ -12,6 +12,8 @@ help keep me organised.
 - `stop`: End the day by running the evening checklist.
 - `today`: Open the notes section for today's note.
 - `yesterday`: Open the notes section for yesterday's note.
+- `weekly`: Open (or create) this week's review note, named by ISO week (e.g.
+  `2026-W27`).
 
 ## Ideas
 
@@ -21,6 +23,8 @@ help keep me organised.
 - generate stats:
   - completed the checklist?
   - semantic analysis of what was learned.
+- monthly / quarterly review notes following the same template approach.
+- auto-link a weekly review to that week's daily notes.
 - nvim plugin
   - command to open the note.
   - telescope searching.

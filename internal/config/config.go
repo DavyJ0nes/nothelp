@@ -4,6 +4,7 @@ import "os"
 
 type Config struct {
 	DataLocation    string
+	WeeklyLocation  string
 	ArchiveLocation string
 }
 
@@ -16,12 +17,17 @@ func Parse() (Config, error) {
 
 	return Config{
 		DataLocation:    homedir + obsidianPrefix + "/notes/daily",
+		WeeklyLocation:  homedir + obsidianPrefix + "/notes/weekly",
 		ArchiveLocation: homedir + obsidianPrefix + "/notes/daily/archive",
 	}, nil
 }
 
 func (c Config) GetDataFilePath(date string) string {
 	return c.DataLocation + "/" + date + ".md"
+}
+
+func (c Config) GetWeeklyFilePath(week string) string {
+	return c.WeeklyLocation + "/" + week + ".md"
 }
 
 func (c Config) GetArchiveFilePath(date string) string {
