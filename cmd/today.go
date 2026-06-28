@@ -17,5 +17,5 @@ func TodayCmd() *cobra.Command {
 }
 
 func todayRun() error {
-	return openNoteFile(-1, "## 📝 The Log", todayDate())
+	return openNoteFile(-1, "## 📝 Log", todayDate())
 }

@@ -17,6 +17,7 @@ func TestParse(t *testing.T) {
 	assert.NilError(t, err)
 
 	assert.Equal(t, home+obsidianPrefix+"/notes/daily", cfg.DataLocation)
+	assert.Equal(t, home+obsidianPrefix+"/notes/weekly", cfg.WeeklyLocation)
 	assert.Equal(t, home+obsidianPrefix+"/notes/daily/archive", cfg.ArchiveLocation)
 }
 
@@ -27,6 +28,15 @@ func TestGetDataFilePath(t *testing.T) {
 	path := cfg.GetDataFilePath(date)
 
 	assert.Equal(t, "/tmp/data/2025-01-02.md", path)
+}
+
+func TestGetWeeklyFilePath(t *testing.T) {
+	cfg := Config{WeeklyLocation: "/tmp/weekly"}
+	week := "2026-W27"
+
+	path := cfg.GetWeeklyFilePath(week)
+
+	assert.Equal(t, "/tmp/weekly/2026-W27.md", path)
 }
 
 func TestGetArchiveFilePath(t *testing.T) {

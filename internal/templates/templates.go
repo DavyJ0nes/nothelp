@@ -9,23 +9,35 @@ import (
 	"text/template"
 )
 
-//go:embed template.md
+//go:embed template.md weekly_template.md
 var tmplFS embed.FS
 
 func Parse(date string) ([]byte, error) {
-	tmpl, err := template.ParseFS(tmplFS, "template.md")
+	tmpl, err := template.New("daily_template.md").Funcs(template.FuncMap{
+		"date": func() string { return date },
+	}).ParseFS(tmplFS, "daily_template.md")
 	if err != nil {
 		return nil, err
 	}
 
-	data := struct {
-		Date string
-	}{
-		Date: date,
+	out := bytes.NewBuffer(nil)
+	if err := tmpl.Execute(out, nil); err != nil {
+		return nil, err
+	}
+
+	return out.Bytes(), nil
+}
+
+func ParseWeekly(week string) ([]byte, error) {
+	tmpl, err := template.New("weekly_template.md").Funcs(template.FuncMap{
+		"week": func() string { return week },
+	}).ParseFS(tmplFS, "weekly_template.md")
+	if err != nil {
+		return nil, err
 	}
 
 	out := bytes.NewBuffer(nil)
-	if err := tmpl.Execute(out, data); err != nil {
+	if err := tmpl.Execute(out, nil); err != nil {
 		return nil, err
 	}
 

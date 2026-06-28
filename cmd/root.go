@@ -12,8 +12,6 @@ func RootCmd() *cobra.Command {
 	}
 	cmd.AddCommand(
 		ArchiveCmd(),
-		AnalysisCmd(),
-		LogCmd(),
 		NoteCmd(),
 		PressupCmd(),
 		ReviewCmd(),
@@ -21,6 +19,7 @@ func RootCmd() *cobra.Command {
 		StopCmd(),
 		TodayCmd(),
 		TrainingCmd(),
+		WeeklyCmd(),
 		YesterdayCmd(),
 	)
 	return cmd

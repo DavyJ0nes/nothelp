@@ -32,6 +32,52 @@ func openNoteFile(offset int, searchText, date string) error {
 	return openInNvim(filePath, lineNumber+offset)
 }
 
+func openWeeklyNoteFile(offset int, searchText, week string) error {
+	conf, err := config.Parse()
+	if err != nil {
+		return err
+	}
+
+	filePath, err := getWeeklyFilePath(conf, week)
+	if err != nil {
+		return err
+	}
+
+	lineNumber, err := templates.GetLineNumber(filePath, searchText)
+	if err != nil {
+		return err
+	}
+
+	return openInNvim(filePath, lineNumber+offset)
+}
+
+func getWeeklyFilePath(conf config.Config, week string) (string, error) {
+	filePath := conf.GetWeeklyFilePath(week)
+	if !exists(filePath) {
+		if err := createNewWeeklyFile(conf, week, filePath); err != nil {
+			return "", err
+		}
+	}
+	return filePath, nil
+}
+
+func createNewWeeklyFile(conf config.Config, week, filePath string) error {
+	body, err := templates.ParseWeekly(week)
+	if err != nil {
+		return err
+	}
+
+	if err := os.MkdirAll(conf.WeeklyLocation, 0o755); err != nil {
+		return err
+	}
+
+	if err := os.WriteFile(filePath, body, 0o600); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func createNewFile(conf config.Config, date, filePath string) error {
 	body, err := templates.Parse(date)
 	if err != nil {
@@ -106,4 +152,9 @@ func todayDate() string {
 
 func yesterdayDate() string {
 	return time.Now().Add(-24 * time.Hour).Format(dateFormat)
+}
+
+func thisWeek() string {
+	year, week := time.Now().ISOWeek()
+	return fmt.Sprintf("%d-W%02d", year, week)
 }
