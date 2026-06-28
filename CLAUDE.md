@@ -80,7 +80,9 @@ Obsidian iCloud vault. Single Go module.
   (`.mise/scripts/release.sh`) computes the next version from commit history
   (`feat` → minor, `fix`/`perf` → patch, breaking → minor while 0.x), tags it,
   and publishes binaries + notes with GoReleaser (`.goreleaser.yml`). So the
-  commit type drives the release — preview with `mise run release:dry`.
+  commit type drives the release — preview with `mise run release:dry`. Override
+  the version with `RELEASE_VERSION=X.Y.Z` (env var, or the workflow_dispatch
+  `version` input) to skip the auto bump.
 - Commit signing (GPG) is enabled — prefer to let the human commit. If you must
   commit to validate, use a throwaway commit and `git reset --soft` afterward.
 

@@ -2,6 +2,12 @@ name: release
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Override version to release, e.g. 0.7.1 (blank = auto-compute from commits)"
+        required: false
+        default: ""
 permissions:
   contents: write
 jobs:
@@ -18,3 +24,4 @@ jobs:
         run: mise run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_VERSION: ${{ inputs.version }}

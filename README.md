@@ -79,6 +79,9 @@ Commits follow [Conventional Commits](https://www.conventionalcommits.org)
 next version from the commit history, tags it, and publishes the changelog and
 Go binaries with [GoReleaser](https://goreleaser.com) (`feat` → minor, `fix` /
 `perf` → patch). Preview the next version locally with `mise run release:dry`.
+To force a specific version (e.g. to skip a number GitHub has wedged), run the
+workflow manually from the Actions tab with a `version` input, or locally with
+`RELEASE_VERSION=0.7.1 mise run release`.
 
 Tool, Go-module, and GitHub-Actions updates are managed by Renovate, which opens
 a single grouped PR on the first Tuesday of each month. `mise.lock` is committed

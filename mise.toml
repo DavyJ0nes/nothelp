@@ -155,13 +155,13 @@ depends = [
 ]
 
 # ────────────────────────────────────────────────────────────────────────────
-# Release — compute the next version from Conventional Commits, tag it, and
-# publish binaries + notes with GoReleaser. Driven on push to main by
-# .github/workflows/release.yml. Needs GITHUB_TOKEN to publish.
+# Release — choose the version (auto from Conventional Commits, or override with
+# RELEASE_VERSION), tag it, and publish binaries + notes with GoReleaser. Driven
+# on push to main by .github/workflows/release.yml. Needs GITHUB_TOKEN to publish.
 # ────────────────────────────────────────────────────────────────────────────
 
 [tasks.release]
-description = "Cut a release: bump version from commits, tag, and publish via GoReleaser"
+description = "Cut a release: pick version (auto, or RELEASE_VERSION=X.Y.Z override), tag, publish via GoReleaser"
 run = "bash ./.mise/scripts/release.sh"
 
 [tasks."release:dry"]
