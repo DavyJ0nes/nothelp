@@ -16,7 +16,7 @@ func TestExists(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	defer os.Remove(file.Name())
+	defer func() { _ = os.Remove(file.Name()) }()
 
 	if !exists(file.Name()) {
 		t.Errorf("expected file to exist")

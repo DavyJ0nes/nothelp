@@ -81,7 +81,7 @@ func reviewRun(cmd *cobra.Command, outputPath string) error {
 	}
 
 	for _, date := range missingDates {
-		fmt.Fprintf(cmd.ErrOrStderr(), "warning: no note found for %s, skipping\n", date)
+		_, _ = fmt.Fprintf(cmd.ErrOrStderr(), "warning: no note found for %s, skipping\n", date)
 	}
 
 	if len(notes) == 0 {
@@ -127,7 +127,7 @@ func reviewRun(cmd *cobra.Command, outputPath string) error {
 		return err
 	}
 
-	fmt.Fprintf(cmd.OutOrStdout(), "review saved to %s\n", outputPath)
+	_, _ = fmt.Fprintf(cmd.OutOrStdout(), "review saved to %s\n", outputPath)
 
 	return nil
 }
@@ -298,7 +298,7 @@ func (c *llmClient) Complete(ctx context.Context, prompt string) (string, error)
 	if err != nil {
 		return "", err
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	respBody, err := io.ReadAll(resp.Body)
 	if err != nil {

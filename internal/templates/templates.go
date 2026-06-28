@@ -9,7 +9,7 @@ import (
 	"text/template"
 )
 
-//go:embed template.md weekly_template.md
+//go:embed daily_template.md weekly_template.md
 var tmplFS embed.FS
 
 func Parse(date string) ([]byte, error) {
@@ -49,7 +49,7 @@ func GetLineNumber(filePath, text string) (int, error) {
 	if err != nil {
 		return -1, err
 	}
-	defer file.Close()
+	defer func() { _ = file.Close() }()
 
 	scanner := bufio.NewScanner(file)
 	lineNumber := 1

@@ -25,3 +25,7 @@
 go.work
 
 # End of https://www.toptal.com/developers/gitignore/api/go
+
+# mise local overrides (never commit). NOTE: mise.lock IS committed.
+mise.local.toml
+.mise.local.toml

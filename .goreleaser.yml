@@ -12,7 +12,6 @@ builds:
     flags:
       - -trimpath
       - -buildvcs=false
-
 archives:
   - format: tar.gz
     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"

@@ -60,7 +60,7 @@ func PressupListCmd() *cobra.Command {
 
 func pressupLogRun(session, roundsStr string) error {
 	rounds := 0
-	fmt.Sscanf(roundsStr, "%d", &rounds)
+	_, _ = fmt.Sscanf(roundsStr, "%d", &rounds)
 
 	data, err := loadPressupData()
 	if err != nil {

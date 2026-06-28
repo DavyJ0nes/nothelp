@@ -1,0 +1,17 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "schedule": ["* * 1-7 * 2"],
+  "packageRules": [
+    {
+      "matchManagers": ["mise"],
+      "groupName": "mise tools",
+      "additionalBranchPrefix": "",
+      "postUpgradeTasks": {
+        "commands": ["mise lock"],
+        "fileFilters": ["mise.lock"],
+        "executionMode": "branch"
+      }
+    }
+  ]
+}
