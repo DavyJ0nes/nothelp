@@ -12,11 +12,11 @@ lockfile_platforms = ["macos-arm64", "linux-x64"]
 minimum_release_age = "7d"
 
 [tools]
-go            = "1.26.4"
+go = "1.26.4"
 golangci-lint = "2.12.2"
-rumdl         = "0.2.23"
-shellcheck    = "0.11.0"
-yamlfmt       = "0.21.0"
+rumdl = "0.2.23"
+shellcheck = "0.11.0"
+yamlfmt = "0.21.0"
 # golines (Go long-line formatter) — pinned via the go: backend to match the
 # binary used elsewhere. Only used by the local `fmt:go` task.
 "go:github.com/segmentio/golines" = "0.13.0"
@@ -31,7 +31,7 @@ version = "0.6.4"
 [tools."github:convco/convco".platforms]
 macos-arm64 = { asset_pattern = "convco-macos.zip" }
 linux-arm64 = { asset_pattern = "convco-ubuntu-aarch64.zip" }
-linux-x64   = { asset_pattern = "convco-ubuntu.zip" }
+linux-x64 = { asset_pattern = "convco-ubuntu.zip" }
 
 # ────────────────────────────────────────────────────────────────────────────
 # Repo / lockfile maintenance.
@@ -56,6 +56,10 @@ fi
 # ────────────────────────────────────────────────────────────────────────────
 # Formatting — markdown (rumdl) and YAML (yamlfmt). `:check` variants are CI-safe.
 # ────────────────────────────────────────────────────────────────────────────
+
+[tasks.fmt]
+description = "Format all file types"
+depends = ["fmt:go", "fmt:md", "fmt:yaml"]
 
 [tasks."fmt:md"]
 description = "Format markdown with rumdl"
