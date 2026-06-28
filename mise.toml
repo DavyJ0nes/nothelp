@@ -17,14 +17,15 @@ golangci-lint = "2.12.2"
 rumdl = "0.2.23"
 shellcheck = "0.11.0"
 yamlfmt = "0.21.0"
+goreleaser = "2.16.0"
 # golines (Go long-line formatter) — pinned via the go: backend to match the
 # binary used elsewhere. Only used by the local `fmt:go` task.
 "go:github.com/segmentio/golines" = "0.13.0"
 
-# convco — Conventional Commits validator backing `lint:commits` (go-semantic-release
-# relies on conventional commits for versioning). No aqua registry entry yet, so
-# pin via the github backend with per-platform asset patterns. No Intel-macOS
-# asset is published, so macos-x64 is omitted.
+# convco — Conventional Commits validator. Backs the `lint:commits` task and the
+# `release` version bump. No aqua registry entry yet, so pin via the github
+# backend with per-platform asset patterns. No Intel-macOS asset is published,
+# so macos-x64 is omitted.
 [tools."github:convco/convco"]
 version = "0.6.4"
 
@@ -150,4 +151,23 @@ depends = [
   "lint:go",
   "build",
   "test",
+  "release:check",
 ]
+
+# ────────────────────────────────────────────────────────────────────────────
+# Release — compute the next version from Conventional Commits, tag it, and
+# publish binaries + notes with GoReleaser. Driven on push to main by
+# .github/workflows/release.yml. Needs GITHUB_TOKEN to publish.
+# ────────────────────────────────────────────────────────────────────────────
+
+[tasks.release]
+description = "Cut a release: bump version from commits, tag, and publish via GoReleaser"
+run = "bash ./.mise/scripts/release.sh"
+
+[tasks."release:dry"]
+description = "Print the version the next release would cut, without tagging or publishing"
+run = "RELEASE_DRY_RUN=1 bash ./.mise/scripts/release.sh"
+
+[tasks."release:check"]
+description = "Validate the GoReleaser config (CI-safe)"
+run = "goreleaser check"

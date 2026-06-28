@@ -29,3 +29,6 @@ go.work
 # mise local overrides (never commit). NOTE: mise.lock IS committed.
 mise.local.toml
 .mise.local.toml
+
+# GoReleaser build output
+dist/

@@ -1,3 +1,4 @@
+version: 2
 project_name: nothelp
 builds:
   - main: ./
@@ -13,5 +14,28 @@ builds:
       - -trimpath
       - -buildvcs=false
 archives:
-  - format: tar.gz
+  - formats: ["tar.gz"]
     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^chore:"
+      - "^ci:"
+      - "^build:"
+      - "^style:"
+      - "^Merge "
+  groups:
+    - title: Features
+      regexp: '^.*?feat(\(.+\))??!?:.+$'
+      order: 0
+    - title: Bug fixes
+      regexp: '^.*?fix(\(.+\))??!?:.+$'
+      order: 1
+    - title: Performance
+      regexp: '^.*?perf(\(.+\))??!?:.+$'
+      order: 2
+    - title: Others
+      order: 999

@@ -76,8 +76,11 @@ Obsidian iCloud vault. Single Go module.
 ## Commits & releases
 
 - [Conventional Commits](https://www.conventionalcommits.org) are required
-  (`convco`; PR CI runs `lint:commits`). go-semantic-release derives the version
-  from commit history on push to `main`, so commit type matters.
+  (`convco`; PR CI runs `lint:commits`). On push to `main`, `mise run release`
+  (`.mise/scripts/release.sh`) computes the next version from commit history
+  (`feat` → minor, `fix`/`perf` → patch, breaking → minor while 0.x), tags it,
+  and publishes binaries + notes with GoReleaser (`.goreleaser.yml`). So the
+  commit type drives the release — preview with `mise run release:dry`.
 - Commit signing (GPG) is enabled — prefer to let the human commit. If you must
   commit to validate, use a throwaway commit and `git reset --soft` afterward.
 
