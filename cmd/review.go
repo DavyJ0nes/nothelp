@@ -180,31 +180,47 @@ func buildReviewPrompt(notes []dailyNote, startDate, endDate string) string {
 	var b strings.Builder
 
 	b.WriteString("You are an expert personal-notes analyst. ")
-	b.WriteString("Using the provided daily notes, produce a concise JSON summary for the week.\n\n")
+	b.WriteString(
+		"Using the provided daily notes, produce a concise JSON summary for the week.\n\n",
+	)
 
 	b.WriteString("Template fields to extract:\n")
 	b.WriteString("- Sleep (0-10) and Energy (0-10).\n")
-	b.WriteString("- Morning Checklist, Focus for Today, and Evening Checklist contain checkboxes like [ ] or [x].\n\n")
+	b.WriteString(
+		"- Morning Checklist, Focus for Today, and Evening Checklist contain checkboxes like [ ] or [x].\n\n",
+	)
 
 	b.WriteString("Tasks:\n")
 	b.WriteString("1) For each day, capture Sleep and Energy (null if missing).\n")
-	b.WriteString("2) Perform sentiment analysis of the author's mood using that day's writing (label positive/neutral/negative plus a brief reason).\n")
-	b.WriteString("3) Mark a checklist as completed only if all items in that section are checked (treat [x], [X], or similar as checked). Track morning_completed, focus_completed, evening_completed per day.\n")
+	b.WriteString(
+		"2) Perform sentiment analysis of the author's mood using that day's writing (label positive/neutral/negative plus a brief reason).\n",
+	)
+	b.WriteString(
+		"3) Mark a checklist as completed only if all items in that section are checked (treat [x], [X], or similar as checked). Track morning_completed, focus_completed, evening_completed per day.\n",
+	)
 	b.WriteString("4) Compute averages for Sleep and Energy across available days.\n")
-	b.WriteString("5) Count how many days had each checklist fully completed across the period.\n\n")
+	b.WriteString(
+		"5) Count how many days had each checklist fully completed across the period.\n\n",
+	)
 
 	b.WriteString("Return a single JSON object with this shape (numbers may be floats):\n")
 	b.WriteString("{\n")
 	b.WriteString(`  "period": {"start": "YYYY-MM-DD", "end": "YYYY-MM-DD"},` + "\n")
 	b.WriteString(`  "averages": {"sleep": <number|null>, "energy": <number|null>},` + "\n")
-	b.WriteString(`  "checklists_completed_totals": {"morning": <int>, "evening": <int>, "focus": <int>},` + "\n")
+	b.WriteString(
+		`  "checklists_completed_totals": {"morning": <int>, "evening": <int>, "focus": <int>},` + "\n",
+	)
 	b.WriteString(`  "days": [` + "\n")
 	b.WriteString(`    {` + "\n")
 	b.WriteString(`      "date": "YYYY-MM-DD",` + "\n")
 	b.WriteString(`      "sleep": <number|null>,` + "\n")
 	b.WriteString(`      "energy": <number|null>,` + "\n")
-	b.WriteString(`      "sentiment": {"label": "positive|neutral|negative", "summary": "<short reason>"},` + "\n")
-	b.WriteString(`      "checklists": {"morning_completed": <bool>, "focus_completed": <bool>, "evening_completed": <bool>}` + "\n")
+	b.WriteString(
+		`      "sentiment": {"label": "positive|neutral|negative", "summary": "<short reason>"},` + "\n",
+	)
+	b.WriteString(
+		`      "checklists": {"morning_completed": <bool>, "focus_completed": <bool>, "evening_completed": <bool>}` + "\n",
+	)
 	b.WriteString("    }\n")
 	b.WriteString("  ]\n")
 	b.WriteString("}\n\n")

@@ -126,7 +126,11 @@ func trainingListRun(weekNum int) error {
 	// Display the week
 	fmt.Printf("\n🚴 WEEK %d: %s\n", targetWeek.WeekNumber, targetWeek.Goal)
 	fmt.Printf("📅 %s → %s\n", targetWeek.StartDate, targetWeek.EndDate)
-	fmt.Printf("⏱️  Volume: %s | 🎯 Target Weight: %s\n\n", targetWeek.Volume, targetWeek.TargetWeight)
+	fmt.Printf(
+		"⏱️  Volume: %s | 🎯 Target Weight: %s\n\n",
+		targetWeek.Volume,
+		targetWeek.TargetWeight,
+	)
 
 	// Show sessions
 	for _, session := range targetWeek.Sessions {
@@ -171,7 +175,8 @@ func trainingShowDay(daysOffset int) error {
 	for i := range plan.Weeks {
 		start, _ := time.Parse("2006-01-02", plan.Weeks[i].StartDate)
 		end, _ := time.Parse("2006-01-02", plan.Weeks[i].EndDate)
-		if (targetDate.Equal(start) || targetDate.After(start)) && (targetDate.Equal(end) || targetDate.Before(end)) {
+		if (targetDate.Equal(start) || targetDate.After(start)) &&
+			(targetDate.Equal(end) || targetDate.Before(end)) {
 			targetWeek = &plan.Weeks[i]
 			break
 		}
@@ -191,7 +196,11 @@ func trainingShowDay(daysOffset int) error {
 	}
 
 	if targetSession == nil {
-		return fmt.Errorf("no session found for %s in week %d", targetDayName, targetWeek.WeekNumber)
+		return fmt.Errorf(
+			"no session found for %s in week %d",
+			targetDayName,
+			targetWeek.WeekNumber,
+		)
 	}
 
 	// Display the session
@@ -278,7 +287,12 @@ func trainingLogRun(day string) error {
 			completed++
 		}
 	}
-	fmt.Printf("Week %d progress: %d/%d sessions completed\n", currentWeek.WeekNumber, completed, len(currentWeek.Sessions))
+	fmt.Printf(
+		"Week %d progress: %d/%d sessions completed\n",
+		currentWeek.WeekNumber,
+		completed,
+		len(currentWeek.Sessions),
+	)
 
 	return nil
 }
