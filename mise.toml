@@ -14,7 +14,7 @@ minimum_release_age = "7d"
 [tools]
 go = "1.26.4"
 golangci-lint = "2.12.2"
-rumdl = "0.2.23"
+rumdl = "0.2.28"
 shellcheck = "0.11.0"
 yamlfmt = "0.21.0"
 goreleaser = "2.16.0"
