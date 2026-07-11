@@ -12,6 +12,18 @@ checksum = "sha256:88901e63aa26b601b6726bff8e05cab89d16ebcb772f719bad431a40b12ca
 url = "https://github.com/convco/convco/releases/download/v0.6.4/convco-macos.zip"
 url_api = "https://api.github.com/repos/convco/convco/releases/assets/428442702"
 
+[[tools."github:convco/convco"]]
+version = "0.6.4"
+backend = "github:convco/convco"
+
+[tools."github:convco/convco".options]
+asset_pattern = "convco-ubuntu.zip"
+
+[tools."github:convco/convco"."platforms.linux-x64"]
+checksum = "sha256:d6e43a1975949ef05d31bb1ac64fdd7c2dbc18b0b65df075c16dc296b8153be7"
+url = "https://github.com/convco/convco/releases/download/v0.6.4/convco-ubuntu.zip"
+url_api = "https://api.github.com/repos/convco/convco/releases/assets/428442682"
+
 [[tools.go]]
 version = "1.26.4"
 backend = "core:go"
@@ -35,11 +47,13 @@ backend = "aqua:golangci/golangci-lint"
 [tools.golangci-lint."platforms.linux-x64"]
 checksum = "sha256:8df580d2670fed8fa984aac0507099af8df275e665215f5c7a2ae3943893a553"
 url = "https://github.com/golangci/golangci-lint/releases/download/v2.12.2/golangci-lint-2.12.2-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/golangci/golangci-lint/releases/assets/413471054"
 provenance = "github-attestations"
 
 [tools.golangci-lint."platforms.macos-arm64"]
 checksum = "sha256:a9c54498731b3128f79e090be6110f3e5fffccc617b08142ed244d4126c73f29"
 url = "https://github.com/golangci/golangci-lint/releases/download/v2.12.2/golangci-lint-2.12.2-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/golangci/golangci-lint/releases/assets/413470950"
 provenance = "github-attestations"
 
 [[tools.goreleaser]]
@@ -49,25 +63,29 @@ backend = "aqua:goreleaser/goreleaser"
 [tools.goreleaser."platforms.linux-x64"]
 checksum = "sha256:eaae05b5eba07533bd0f06846b68c808399504784df00c62eb219541fc04e5e2"
 url = "https://github.com/goreleaser/goreleaser/releases/download/v2.16.0/goreleaser_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/goreleaser/goreleaser/releases/assets/428676974"
 provenance = "github-attestations"
 
 [tools.goreleaser."platforms.macos-arm64"]
 checksum = "sha256:6a102e4d588fd3553a9ac7321ca6023a9f205843f4861ca35bd337dfa9e72ece"
 url = "https://github.com/goreleaser/goreleaser/releases/download/v2.16.0/goreleaser_Darwin_all.tar.gz"
+url_api = "https://api.github.com/repos/goreleaser/goreleaser/releases/assets/428677010"
 provenance = "github-attestations"
 
 [[tools.rumdl]]
-version = "0.2.23"
+version = "0.2.28"
 backend = "aqua:rvben/rumdl"
 
 [tools.rumdl."platforms.linux-x64"]
-checksum = "sha256:af01cfcccab9ff79164ccd90762089d80343f6b2b053999458586123f99d48e2"
-url = "https://github.com/rvben/rumdl/releases/download/v0.2.23/rumdl-v0.2.23-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:2ad91df620d5e6032b52674a1b754c8899f0baadfc7c1b3b00b8792adab71f9d"
+url = "https://github.com/rvben/rumdl/releases/download/v0.2.28/rumdl-v0.2.28-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/rvben/rumdl/releases/assets/465246885"
 provenance = "github-attestations"
 
 [tools.rumdl."platforms.macos-arm64"]
-checksum = "sha256:631e69101191c7d2b939a7c5352ce695cfffd4db69b31018de0ca4962c63fd25"
-url = "https://github.com/rvben/rumdl/releases/download/v0.2.23/rumdl-v0.2.23-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:14babd3c439f55fdcbd5eea83e1f9639e99e6630562fd9a0f5015e70085f7089"
+url = "https://github.com/rvben/rumdl/releases/download/v0.2.28/rumdl-v0.2.28-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/rvben/rumdl/releases/assets/465246883"
 provenance = "github-attestations"
 
 [[tools.shellcheck]]
@@ -77,10 +95,12 @@ backend = "aqua:koalaman/shellcheck"
 [tools.shellcheck."platforms.linux-x64"]
 checksum = "sha256:8c3be12b05d5c177a04c29e3c78ce89ac86f1595681cab149b65b97c4e227198"
 url = "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.linux.x86_64.tar.xz"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/279056942"
 
 [tools.shellcheck."platforms.macos-arm64"]
 checksum = "sha256:56affdd8de5527894dca6dc3d7e0a99a873b0f004d7aabc30ae407d3f48b0a79"
 url = "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.darwin.aarch64.tar.xz"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/279056932"
 
 [[tools.yamlfmt]]
 version = "0.21.0"
@@ -89,7 +109,9 @@ backend = "aqua:google/yamlfmt"
 [tools.yamlfmt."platforms.linux-x64"]
 checksum = "sha256:1f300d9257b232bb3b541d7fb1b0e6b3c121bcbab381c86cd38cb8722be8a566"
 url = "https://github.com/google/yamlfmt/releases/download/v0.21.0/yamlfmt_0.21.0_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/google/yamlfmt/releases/assets/336650203"
 
 [tools.yamlfmt."platforms.macos-arm64"]
 checksum = "sha256:4b417ecb94339d57e4c122ecc948c1a00fe328b5853266de9806e652a92858fa"
 url = "https://github.com/google/yamlfmt/releases/download/v0.21.0/yamlfmt_0.21.0_Darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/google/yamlfmt/releases/assets/336650209"

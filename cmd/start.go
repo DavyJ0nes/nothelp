@@ -16,15 +16,5 @@ func StartCmd() *cobra.Command {
 }
 
 func startRun() error {
-	err := killApps([]string{"Steam", "Firefox", "Chrome", "Music", "Preview"})
-	if err != nil {
-		return err
-	}
-
-	err = startApps([]string{"Slack", "Arc"})
-	if err != nil {
-		return err
-	}
-
-	return openNoteFile(0, "## 🚀 Start", todayDate())
+	return openDailyNoteFile(0, "## 🚀 Start", todayDate())
 }

@@ -12,7 +12,7 @@ import (
 //go:embed daily_template.md weekly_template.md
 var tmplFS embed.FS
 
-func Parse(date string) ([]byte, error) {
+func ParseDaily(date string) ([]byte, error) {
 	tmpl, err := template.New("daily_template.md").Funcs(template.FuncMap{
 		"date": func() string { return date },
 	}).ParseFS(tmplFS, "daily_template.md")

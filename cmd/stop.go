@@ -18,14 +18,7 @@ func StopCmd() *cobra.Command {
 }
 
 func stopRun() error {
-	fmt.Println("🏁 Killing work apps...")
-	err := killApps([]string{"Slack", "Arc"})
-	if err != nil {
-		return err
-	}
-
-	err = openNoteFile(0, "## 🏁 Shutdown", todayDate())
-	if err != nil {
+	if err := openDailyNoteFile(0, "## 🏁 Shutdown", todayDate()); err != nil {
 		return err
 	}
 

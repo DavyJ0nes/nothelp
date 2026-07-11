@@ -9,7 +9,7 @@ import (
 
 func TestParse(t *testing.T) {
 	date := "2025-01-19"
-	result, err := templates.Parse(date)
+	result, err := templates.ParseDaily(date)
 	if err != nil {
 		t.Fatalf("Expected no error, got %v", err)
 	}
